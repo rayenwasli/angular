@@ -7,6 +7,8 @@ WORKDIR /app
 # Copier les fichiers du projet
 COPY package*.json ./
 RUN npm install
+
+# Copier le reste des fichiers de l'application
 COPY . .
 
 # Construire l'application Angular

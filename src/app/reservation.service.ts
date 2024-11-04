@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ReservationService {
 
-  private apiUrl = 'http://localhost:8089/tpfoyer/reservation';
+  private apiUrl = 'http://localhost:8087/SpringMVC/reservation';
 
   constructor(private http: HttpClient) { }
 

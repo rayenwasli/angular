@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: url('../../assets/interfaceimage.png') no-repeat center center/cover;
+}
+
+.wrapper {
+  width: 600px; /* Increased width */
+  padding: 20px; /* Increased padding for more space */
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Increased shadow */
+  position: absolute;
+  left: 50px; /* Set left position */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.logo-text {
+  font-size: 28px; /* Increased logo text size */
+  font-weight: 700;
+  margin-bottom: 40px; /* Increased bottom margin for spacing */
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.brand {
+  color: #fff;
+  font-size: 60px; /* Increased font size */
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 30px; /* Increased bottom margin for spacing */
+}
+
+.input-box input,
+.input-box select {
+  width: 100%;
+  padding: 18px 20px; /* Increased padding for input fields */
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  color: #333;
+  font-size: 20px; /* Increased font size for input fields */
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s; /* Transition for focus effect */
+}
+
+.input-box input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Shadow effect on focus */
+}
+
+.input-box input::placeholder {
+  color: #888;
+}
+
+/* Toggle Switch Styles */
+.checkbox-container {
+  display: flex;
+  align-items: center; /* Align checkbox and label vertically */
+  margin-bottom: 20px; /* Margin below checkbox */
+}
+
+.checkbox-container input[type="checkbox"] {
+  display: none; /* Hide the default checkbox */
+}
+
+.checkbox-label {
+  position: relative;
+  cursor: pointer; /* Change cursor to pointer */
+  font-size: 20px; /* Font size for label */
+  color: #333; /* Label color */
+  padding-left: 40px; /* Space for custom switch */
+}
+
+.checkbox-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px; /* Width of the switch */
+  height: 15px; /* Height of the switch */
+  background-color: #ccc; /* Default background color */
+  border-radius: 50px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkbox-label::before {
+  background-color: #007bff; /* Background color when checked */
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkbox-label::after {
+  content: '';
+  position: absolute;
+  left: 5px; /* Position of the toggle */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Width of the toggle */
+  height: 20px; /* Height of the toggle */
+  background-color: white; /* Toggle color */
+  border-radius: 50%; /* Round toggle */
+  transition: left 0.3s; /* Smooth transition */
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkbox-label::after {
+  left: 25px; /* Move toggle to the right */
+}
+
+.btn {
+  width: 100%;
+  padding: 18px; /* Increased button padding */
+  background: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px; /* Increased button font size */
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: #32323B;
+  color: #fff;
+}
+
+.text-danger {
+  color: red;
+  font-size: 16px; /* Increased font size for error messages */
+  text-align: left;
+  margin-top: 5px;
+  padding-left: 5px;
+  animation: fade-in 0.5s ease-in; /* Animation for error message */
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

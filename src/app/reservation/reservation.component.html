@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation Form</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: url('../../assets/interfaceimage.png') no-repeat center center/cover;
+    }
+
+    .wrapper {
+      width: 600px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      position: absolute;
+      left: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand {
+      color: #fff;
+      font-size: 60px;
+    }
+
+    .input-box {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .input-box input,
+    .input-box select {
+      width: 100%;
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      color: #333;
+      font-size: 20px;
+      outline: none;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .input-box input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .input-box input::placeholder {
+      color: #888;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      display: none;
+    }
+
+    .checkbox-label {
+      position: relative;
+      cursor: pointer;
+      font-size: 20px;
+      color: white;
+      padding-left: 40px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .checkbox-label::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 15px;
+      background-color: #ccc;
+      border-radius: 50px;
+      transition: background-color 0.3s;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked + .checkbox-label::before {
+      background-color: #007bff;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked + .checkbox-label::after {
+      content: '';
+      position: absolute;
+      left: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border-radius: 50%;
+      transition: left 0.3s;
+    }
+
+    .checkbox-label:hover {
+      color: #007bff;
+      text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 18px;
+      background: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: #32323B;
+      color: #fff;
+    }
+
+    .text-danger {
+      color: red;
+      font-size: 16px;
+      text-align: left;
+      margin-top: 5px;
+      padding-left: 5px;
+      animation: fade-in 0.5s ease-in;
+    }
+
+    .text-success {
+      color: green;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <p class="logo-text">
+      <span class="brand">Reservation</span>
+    </p>
+
+    <!-- Success Message -->
+    <p *ngIf="successMessage" class="text-success">{{ successMessage }}</p>
+
+    <form [formGroup]="reservationForm" (ngSubmit)="submitReservation()">
+      <div class="input-box">
+        <input type="text" formControlName="idReservation" placeholder="ID Reservation" required />
+        <div *ngIf="reservationForm.get('idReservation')?.invalid && (reservationForm.get('idReservation')?.touched || reservationForm.get('idReservation')?.dirty)" class="text-danger">
+          ID Reservation is required.
+        </div>
+      </div>
+
+      <div class="input-box">
+        <input type="date" formControlName="anneeUniversitaire" placeholder="Année Universitaire" required />
+        <div *ngIf="reservationForm.get('anneeUniversitaire')?.invalid && (reservationForm.get('anneeUniversitaire')?.touched || reservationForm.get('anneeUniversitaire')?.dirty)" class="text-danger">
+          Année Universitaire is required.
+        </div>
+      </div>
+
+      <div class="input-box">
+        <div class="checkbox-container">
+          <input type="checkbox" formControlName="estValide" id="valid-checkbox" />
+          <label class="checkbox-label" for="valid-checkbox">Valid</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Submit Reservation</button>
+    </form>
+  </div>
+</body>
+</html>
